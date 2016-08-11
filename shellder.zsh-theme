@@ -43,14 +43,14 @@ prompt_end() {
 # Prompt functions
 #
 
-# Context: user@hostname (who am I and where am I)
+# Context: user (who am I and where am I)
 prompt_context() {
   local prompt
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     if [[ "$USER" != "$DEFAULT_USER" ]]; then
-      prompt="%(!.%{%F{yellow}%}.)$USER@%m"
+      prompt="%(!.%{%F{yellow}%}.)$USER"
     else
-      prompt="%(!.%{%F{yellow}%}.)%m"
+      prompt="%(!.%{%F{yellow}%}.)"
     fi
     prompt_segment 238 250 $prompt
   fi
@@ -147,7 +147,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment 234 231 '%~'
+  prompt_segment 234 231 '%d'
 }
 
 # Virtualenv: current working virtualenv
